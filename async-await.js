@@ -38,3 +38,23 @@ const getRecommendation = RestaurantName => {
     }, 1500, RestaurantName)
   });
 };
+
+
+//async function with multiple await 
+async function getRecipeAW() {
+  const IDs = await getIds;
+  console.log("Restaurant IDs", IDs);
+
+  const recipe = await getRecipe(IDs[3]);
+  console.log('Recipe : ', recipe);
+
+  const recommended = await getRecommendation(recipe.id);
+  console.log(`Recommended from ${recipe.id}: `, recommended);
+
+  return recipe;
+}
+
+//returning promise from the async function and showing the result on the console.
+getRecipeAW().then(result => {
+  console.log('Result :', result);
+});
