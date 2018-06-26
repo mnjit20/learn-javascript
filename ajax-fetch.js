@@ -2,7 +2,7 @@
 /* 2018 */
 
 console.log('***************************');
-console.log('********Async-Await*******');
+console.log('***AJAX Calls with Fetch***');
 console.log('***************************');
 
 
@@ -39,21 +39,14 @@ const getRecommendation = RestaurantName => {
 };
 
 
-//async function with multiple await 
-async function getRecipeAW() {
-  const IDs = await getIds;
-  console.log("Restaurant IDs", IDs);
+//ajax calls using fetch
+//fetching using DainikBhaskar API
 
-  const recipe = await getRecipe(IDs[3]);
-  console.log('Recipe : ', recipe);
-
-  const recommended = await getRecommendation(recipe.id);
-  console.log(`Recommended from ${recipe.id}: `, recommended);
-
-  return recipe;
-}
-
-//returning promise from the async function and showing the result on the console.
-getRecipeAW().then(result => {
-  console.log('Result :', result);
-});
+fetch('https://appfeedlight.bhaskar.com/webfeed/news/521/521/2/0/15/').then(result => {
+  console.log(result);
+  return result.json();
+}).then(data => {
+  // console.log(data);
+  const firstStory = data.data;
+  console.log(firstStory);
+}).catch(error => console.log(error));

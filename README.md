@@ -6,3 +6,6 @@
 
 "# From Promise to Async Await: Consume promises in easier way with Async await"
 
+"# AJAX and APIS: to do http request in async way to get and post data to server."
+
+"# Fetch: "
