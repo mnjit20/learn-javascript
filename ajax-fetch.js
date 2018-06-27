@@ -2,41 +2,9 @@
 /* 2018 */
 
 console.log('***************************');
-console.log('***AJAX Calls with Fetch***');
+console.log('***AJAX = async await***');
+console.log('***Loading data from Dainik Bhaskar API***');
 console.log('***************************');
-
-
-const getIds = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve([521, 673, 886, 998, 1002]);
-  }, 1500);
-});
-
-const getRecipe = recipeId => {
-  return new Promise((resolve, reject) => {
-    setTimeout((ID) => {
-      const recipe = {
-        title: 'Italian Pizza',
-        Restaurant: 'German Bakers',
-        id: ID
-      };
-      resolve(recipe);
-    }, 1500, recipeId);
-  });
-};
-
-const getRecommendation = RestaurantName => {
-  return new Promise((resolve, reject) => {
-    setTimeout((pubID) => {
-      const recRecipe = {
-        title: 'Maxican Pizza',
-        Restaurant: 'German Bakers',
-        id: pubID
-      }
-      resolve(recRecipe);
-    }, 1500, RestaurantName)
-  });
-};
 
 
 //ajax calls using fetch
@@ -62,8 +30,8 @@ const getNewsIDs = new Promise((resolve, reject) => {
   }).catch(error => console.log(error));
 
 });
-const getNewsDetails = (IDs) => {
 
+const getNewsDetails = (IDs) => {
   return new Promise((resolve, reject) => {
 
     fetch(`https://appfeedlight.bhaskar.com/webfeed/articaldetail/521/${IDs}`).then(result => {
@@ -74,6 +42,7 @@ const getNewsDetails = (IDs) => {
       const firstStory = data.data.story;
       stories = data.data.story;
       // console.log(stories);
+      stories.feed_url = `https://appfeedlight.bhaskar.com/webfeed/articaldetail/521/${IDs}`;
       resolve(stories);
     }).catch(error => console.log(error));
   });
@@ -83,13 +52,18 @@ const getNewsDetails = (IDs) => {
 
 async function getStoryContent() {
   const IDs = await getNewsIDs;
-  console.log(IDs);
 
   const news = [];
   for (var i = 0; i < IDs.length; i++) {
+
     news[i] = await getNewsDetails(IDs[i]);
-    console.log('Story Id: ', news[i]['storyid'], ' - ', news[i]['title']);
+
+
+    console.log('Story: ', news[i]['storyid'], ' - ', news[i]['title']);
   }
 }
 
-getStoryContent();
+const aa = getStoryContent().then(() => {
+  //promise callback after completing of this section.   
+  console.log('getStoryContent Function promise resolved');
+});
