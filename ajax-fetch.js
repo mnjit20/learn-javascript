@@ -58,7 +58,6 @@ async function getStoryContent() {
 
     news[i] = await getNewsDetails(IDs[i]);
 
-
     console.log('Story: ', news[i]['storyid'], ' - ', news[i]['title']);
   }
 }

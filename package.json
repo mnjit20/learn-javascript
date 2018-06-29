@@ -1,0 +1,28 @@
+{
+  "name": "learn-javascript",
+  "version": "1.0.0",
+  "description": "samples of async javascript codes",
+  "main": "ajax-fetch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnjit20/learn-javascript.git"
+  },
+  "keywords": [
+    "async",
+    "js",
+    "promises",
+    "await"
+  ],
+  "author": "MANJ337",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mnjit20/learn-javascript/issues"
+  },
+  "homepage": "https://github.com/mnjit20/learn-javascript#readme",
+  "dependencies": {
+    "node-fetch": "^2.1.2"
+  }
+}
