@@ -16,19 +16,21 @@
   // })
 
   async function showGitHubUser(endpoint) {
+    console.log('request came with ', endpoint);
     const url = `https://api.github.com${endpoint}`;
     const response = await fetch(url);
     return await response.json();
   }
 
   async function showUserRepos(handle) {
-    const user = showGitHubUser(`/users/${handle}`);
+    const userPromise = showGitHubUser(`/users/${handle}`);
+    const reposPromise = showGitHubUser(`/users/${handle}/repos`);
 
-
-    //const repos = await showGitHubUser(`/users/${handle}/repos`);
+    const user = await userPromise;
+    const repos = await reposPromise;
 
     console.log(user.name);
-    //console.log(repos.length, ' repos');
+    console.log(repos.length, ' repos');
 
   }
 
