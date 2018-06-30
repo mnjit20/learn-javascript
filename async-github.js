@@ -15,24 +15,24 @@
   //   console.log(user.location);
   // })
 
-  async function showGitHubUser(endpoint) {
-    console.log('request came with ', endpoint);
-    const url = `https://api.github.com${endpoint}`;
+  async function showNewsStory(endpoint) {
+    //console.log('request came with ', endpoint);
+    const url = `https://appfeedlight.bhaskar.com/webfeed${endpoint}`;
+
     const response = await fetch(url);
     return await response.json();
   }
 
   async function showUserRepos(handle) {
-    const userPromise = showGitHubUser(`/users/${handle}`);
-    const reposPromise = showGitHubUser(`/users/${handle}/repos`);
+    const listPromise = showNewsStory(`/news/521/521/2/0/15/`);
+    const storyPromise = showNewsStory(`/articaldetail/521/${handle}`);
 
-    const user = await userPromise;
-    const repos = await reposPromise;
+    const list = await listPromise;
+    const news = await storyPromise;
 
-    console.log(user.name);
-    console.log(repos.length, ' repos');
+    console.log(list.data.story.length);
+    console.log(news.data.story.title);
 
   }
 
-
-  showUserRepos('mnjit20');
+  showUserRepos('122203101');
