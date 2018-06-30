@@ -24,11 +24,11 @@
   }
 
   async function showUserRepos(handle) {
-    const listPromise = showNewsStory(`/news/521/521/2/0/15/`);
-    const storyPromise = showNewsStory(`/articaldetail/521/${handle}`);
 
-    const list = await listPromise;
-    const news = await storyPromise;
+    const [list, news] = await Promise.all([
+      showNewsStory(`/news/521/521/2/0/15/`),
+      showNewsStory(`/articaldetail/521/${handle}`)
+    ]);
 
     console.log(list.data.story.length);
     console.log(news.data.story.title);
