@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mnjit20/learn-javascript#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "node-fetch": "^2.1.2"
   }
 }
